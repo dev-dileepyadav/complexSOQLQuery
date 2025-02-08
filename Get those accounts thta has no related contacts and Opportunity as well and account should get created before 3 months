@@ -1,0 +1,10 @@
+Question : Get those accounts thta has no related contacts and Opportunity as well and account should get created before 3 months
+
+Ans:
+
+List<Account> Accounts = [SELECT Id FROM Account WHERE CreatedDate = LAST_N_MONTHS:3
+                         AND Id NOT IN (SELECT accountId FROM Contact WHERE AccountId != null)
+                         AND Id NOT IN(SELECT accountId FROM Opportunity WHERE AccountId != null)];
+for(Account account : accounts){
+    System.debug(account);
+}
