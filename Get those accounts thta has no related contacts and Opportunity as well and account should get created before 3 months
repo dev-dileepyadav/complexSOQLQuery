@@ -13,3 +13,8 @@ Question : Find out the accounts that related contacts does not has email let's 
 is null then this contact's related account should get query
 
 Ans : SELECT Id,Name FROM Account WHERE Id IN(SELECT AccountId FROM Contact WHERE Email = null)
+
+
+Query the duplicate name  records 
+
+SELECT Name, COUNT(Id) FROM Account GROUP BY Name HAVING COUNT(Id) > 1 
